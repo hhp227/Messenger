@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".LoginActivity">
+
+    <include
+            android:id="@+id/toolbar"
+            layout="@layout/bar_layout"/>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:layout_below="@id/toolbar"
+            android:padding="16dp">
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="로그인"
+                android:textSize="20dp"
+                android:textStyle="bold"/>
+
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/et_email"
+                android:inputType="textEmailAddress"
+                android:layout_marginTop="10dp"
+                android:hint="이메일"/>
+
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/et_password"
+                android:inputType="textPassword"
+                android:layout_marginTop="10dp"
+                android:hint="패스워드"/>
+
+        <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="로그인"
+                android:id="@+id/b_login"
+                android:background="@color/colorPrimaryDark"
+                android:layout_marginTop="10dp"
+                android:textColor="#ffffff"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
