@@ -1,14 +1,15 @@
 package com.hhp227.messenger.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
+import com.hhp227.messenger.MessageActivity;
 import com.hhp227.messenger.R;
 import com.hhp227.messenger.dto.User;
 
@@ -31,12 +32,21 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        User user = users.get(position);
+        final User user = users.get(position);
         holder.userName.setText(user.getName());
         if (user.getImageUrl().equals("default"))
             holder.profileImage.setImageResource(R.mipmap.ic_launcher);
         else
             Glide.with(context).load(user.getImageUrl()).into(holder.profileImage);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, MessageActivity.class);
+                intent.putExtra("userId", user.getId());
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override

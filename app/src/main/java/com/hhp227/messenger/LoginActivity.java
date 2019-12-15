@@ -43,9 +43,9 @@ public class LoginActivity extends AppCompatActivity {
                 String email = userEmail.getText().toString();
                 String password = userPassword.getText().toString();
 
-                if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
+                if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password))
                     Toast.makeText(getApplicationContext(), "이메일 또는 패스워드를 입력하세요", Toast.LENGTH_LONG).show();
-                } else {
+                else {
                     firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(Task<AuthResult> task) {

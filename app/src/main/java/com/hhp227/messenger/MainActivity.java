@@ -5,8 +5,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.appcompat.widget.Toolbar;
@@ -56,11 +54,10 @@ public class MainActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);
                 userName.setText(user.getName());
-                if (user.getImageUrl().equals("default")) {
+                if (user.getImageUrl().equals("default"))
                     profileImage.setImageResource(R.mipmap.ic_launcher);
-                } else {
+                else
                     Glide.with(getApplicationContext()).load(user.getImageUrl()).into(profileImage);
-                }
             }
 
             @Override

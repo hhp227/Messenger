@@ -51,13 +51,12 @@ public class RegisterActivity extends AppCompatActivity {
                 String email = userEmail.getText().toString();
                 String password = userPassword.getText().toString();
 
-                if (TextUtils.isEmpty(name) || TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
+                if (TextUtils.isEmpty(name) || TextUtils.isEmpty(email) || TextUtils.isEmpty(password))
                     Toast.makeText(RegisterActivity.this, "입력하세요", Toast.LENGTH_SHORT).show();
-                } else if (password.length() < 6) {
+                else if (password.length() < 6)
                     Toast.makeText(RegisterActivity.this, "패스워드는 6자리 이하로 입력하세요", Toast.LENGTH_SHORT).show();
-                } else {
+                else
                     register(name, email, password);
-                }
             }
         });
     }
