@@ -44,6 +44,14 @@
                     android:textStyle="bold"
                     android:textSize="18sp"/>
 
+            <ProgressBar
+                    android:id="@+id/pb_profile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:visibility="invisible"/>
+
         </RelativeLayout>
 
     </androidx.cardview.widget.CardView>

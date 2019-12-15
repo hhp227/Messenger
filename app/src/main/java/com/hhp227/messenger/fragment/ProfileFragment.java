@@ -45,12 +45,14 @@ public class ProfileFragment extends Fragment {
     private StorageReference storageReference;
     private Uri imageUri;
     private StorageTask uploadTask;
+    private ProgressBar progressBar;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_profile, container, false);
         profileImage = rootView.findViewById(R.id.iv_profile_image);
         userName = rootView.findViewById(R.id.tv_name);
+        progressBar = rootView.findViewById(R.id.pb_profile);
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
@@ -94,7 +96,7 @@ public class ProfileFragment extends Fragment {
     }
 
     private void uploadImage() {
-        ProgressBar progressBar = new ProgressBar(getContext());
+        progressBar.setVisibility(View.VISIBLE);
         if (imageUri != null) {
             final StorageReference fileReference = storageReference.child(System.currentTimeMillis() + "." + getFileExtension(imageUri));
             uploadTask = fileReference.putFile(imageUri);
@@ -116,14 +118,16 @@ public class ProfileFragment extends Fragment {
                         HashMap<String, Object> map = new HashMap<>();
                         map.put("imageUrl", uri);
                         databaseReference.updateChildren(map);
-                    } else {
+                    } else
                         Toast.makeText(getContext(), "실패", Toast.LENGTH_LONG).show();
-                    }
+
+                    progressBar.setVisibility(View.GONE);
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(Exception e) {
                     Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+                    progressBar.setVisibility(View.GONE);
                 }
             });
         } else
