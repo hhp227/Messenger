@@ -19,6 +19,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.*;
 import com.hhp227.messenger.dto.User;
 import com.hhp227.messenger.fragment.ChatFragment;
+import com.hhp227.messenger.fragment.ProfileFragment;
 import com.hhp227.messenger.fragment.UserFragment;
 
 import java.util.ArrayList;
@@ -67,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
         });
         viewPagerAdapter.addFragment(new UserFragment(), "사용자");
         viewPagerAdapter.addFragment(new ChatFragment(), "채팅");
+        viewPagerAdapter.addFragment(new ProfileFragment(), "프로필");
         viewPager.setAdapter(viewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
     }
