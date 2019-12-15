@@ -32,7 +32,7 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        userName = findViewById(R.id.et_username);
+        userName = findViewById(R.id.et_name);
         userEmail = findViewById(R.id.et_email);
         userPassword = findViewById(R.id.et_password);
         register = findViewById(R.id.b_register);
@@ -75,7 +75,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                     HashMap<String, String> hashMap = new HashMap<>();
                     hashMap.put("id", userId);
-                    hashMap.put("username", name);
+                    hashMap.put("name", name);
                     hashMap.put("imageUrl", "default");
 
                     databaseReference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {

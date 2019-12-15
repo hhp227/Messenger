@@ -2,15 +2,15 @@ package com.hhp227.messenger.dto;
 
 public class User {
     private String id;
-    private String userName;
+    private String name;
     private String imageUrl;
 
     public User() {
     }
 
-    public User(String id, String userName, String imageUrl) {
+    public User(String id, String name, String imageUrl) {
         this.id = id;
-        this.userName = userName;
+        this.name = name;
         this.imageUrl = imageUrl;
     }
 
@@ -22,12 +22,12 @@ public class User {
         this.id = id;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getName() {
+        return name;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getImageUrl() {
