@@ -137,7 +137,7 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == IMAGE_REQUEST && resultCode != RESULT_OK && data != null && data.getData() != null) {
+        if (requestCode == IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
             imageUri = data.getData();
             if (uploadTask != null && uploadTask.isInProgress())
                 Toast.makeText(getContext(), "업로드 중입니다.", Toast.LENGTH_LONG).show();
