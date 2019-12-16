@@ -23,6 +23,7 @@ import com.hhp227.messenger.fragment.ProfileFragment;
 import com.hhp227.messenger.fragment.UserFragment;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
     private ImageView profileImage;
@@ -84,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.logout :
                 FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(getApplicationContext(), StartActivity.class));
+                startActivity(new Intent(getApplicationContext(), StartActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                 finish();
                 return true;
         }
@@ -120,5 +121,26 @@ public class MainActivity extends AppCompatActivity {
             fragments.add(fragment);
             titles.add(title);
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        status("online");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        status("offline");
+    }
+
+    private void status(String status) {
+        databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
+
+        HashMap<String, Object> hashMap = new HashMap<>();
+        hashMap.put("status", status);
+
+        databaseReference.updateChildren(hashMap);
     }
 }

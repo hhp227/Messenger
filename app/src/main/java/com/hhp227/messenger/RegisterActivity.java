@@ -76,6 +76,7 @@ public class RegisterActivity extends AppCompatActivity {
                     hashMap.put("id", userId);
                     hashMap.put("name", name);
                     hashMap.put("imageUrl", "default");
+                    hashMap.put("status", "offline");
 
                     databaseReference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
