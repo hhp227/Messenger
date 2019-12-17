@@ -19,6 +19,7 @@ import com.hhp227.messenger.dto.Message;
 import com.hhp227.messenger.dto.User;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class ChatFragment extends Fragment {
@@ -77,8 +78,8 @@ public class ChatFragment extends Fragment {
                     for (String id : userList)
                         if (user.getId().equals(id))
                             if (users.size() != 0) {
-                                for (User user1 : users)
-                                    if (!user.getId().equals(user1.getId()))
+                                for (int i = 0; i < users.size(); i++)
+                                    if (!user.getId().equals(users.get(i).getId()))
                                         users.add(user);
                             } else
                                 users.add(user);

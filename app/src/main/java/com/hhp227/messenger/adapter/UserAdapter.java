@@ -42,13 +42,9 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
             Glide.with(context).load(user.getImageUrl()).into(holder.profileImage);
 
         if (isChat) {
-            if (user.getStatus().equals("online")) {
-                holder.imageOn.setVisibility(View.VISIBLE);
-                holder.imageOff.setVisibility(View.GONE);
-            } else {
-                holder.imageOn.setVisibility(View.GONE);
-                holder.imageOff.setVisibility(View.VISIBLE);
-            }
+            boolean isOnline = user.getStatus().equals("online");
+            holder.imageOn.setVisibility(isOnline ? View.VISIBLE : View.GONE);
+            holder.imageOff.setVisibility(isOnline ? View.GONE : View.VISIBLE);
         } else {
             holder.imageOn.setVisibility(View.GONE);
             holder.imageOff.setVisibility(View.GONE);

@@ -127,9 +127,9 @@ public class MessageActivity extends AppCompatActivity {
                 messages.clear();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Message message = snapshot.getValue(Message.class);
-                    if (message.getReceiver().equals(myId) && message.getSender().equals(userId) || message.getReceiver().equals(userId) && message.getSender().equals(myId)) {
+                    if (message.getReceiver().equals(myId) && message.getSender().equals(userId) || message.getReceiver().equals(userId) && message.getSender().equals(myId))
                         messages.add(message);
-                    }
+
                     messageAdapter = new MessageAdapter(MessageActivity.this, messages, imageUrl);
                     recyclerView.setAdapter(messageAdapter);
                 }
