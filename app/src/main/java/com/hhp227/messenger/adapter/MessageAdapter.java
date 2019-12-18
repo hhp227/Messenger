@@ -31,13 +31,8 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHole
 
     @Override
     public MessageAdapter.ViewHoler onCreateViewHolder(ViewGroup parent, int viewType) {
-        if (viewType == MSG_TYPE_LEFT) {
-            View rootView = LayoutInflater.from(context).inflate(R.layout.chat_item_left, parent, false);
-            return new MessageAdapter.ViewHoler(rootView);
-        } else {
-            View rootView = LayoutInflater.from(context).inflate(R.layout.chat_item_right, parent, false);
-            return new MessageAdapter.ViewHoler(rootView);
-        }
+        View rootView = LayoutInflater.from(context).inflate(viewType == MSG_TYPE_LEFT ? R.layout.chat_item_left : R.layout.chat_item_right, parent, false);
+        return new MessageAdapter.ViewHoler(rootView);
     }
 
     @Override
@@ -48,6 +43,10 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHole
             holder.profileImage.setImageResource(R.mipmap.ic_launcher);
         else
             Glide.with(context).load(imageUrl).into(holder.profileImage);
+        if (position == messages.size() - 1)
+            holder.textSeen.setText(msg.isSeen() ? "읽음" : "전송됨");
+        else
+            holder.textSeen.setVisibility(View.GONE);
     }
 
     @Override
@@ -56,7 +55,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHole
     }
 
     public class ViewHoler extends RecyclerView.ViewHolder {
-        public TextView textMessage;
+        public TextView textMessage, textSeen;
         public ImageView profileImage;
 
         public ViewHoler(View itemView) {
@@ -64,6 +63,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHole
 
             textMessage = itemView.findViewById(R.id.tv_message);
             profileImage = itemView.findViewById(R.id.iv_profile_image);
+            textSeen = itemView.findViewById(R.id.tv_seen);
         }
     }
 

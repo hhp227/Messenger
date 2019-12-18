@@ -6,6 +6,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -20,6 +21,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button login;
     private Toolbar toolbar;
     private FirebaseAuth firebaseAuth;
+    private TextView forgotPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +32,7 @@ public class LoginActivity extends AppCompatActivity {
         userEmail = findViewById(R.id.et_email);
         userPassword = findViewById(R.id.et_password);
         login = findViewById(R.id.b_login);
+        forgotPassword = findViewById(R.id.tv_forgot_pw);
 
         firebaseAuth = FirebaseAuth.getInstance();
 
@@ -59,6 +62,12 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     });
                 }
+            }
+        });
+        forgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), ResetPasswordActivity.class));
             }
         });
     }

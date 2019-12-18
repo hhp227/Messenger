@@ -47,4 +47,16 @@
             android:layout_toEndOf="@id/iv_profile_image"
             android:visibility="gone"/>
 
+    <TextView
+            android:id="@+id/tv_last_msg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_name"
+            android:layout_toRightOf="@id/iv_profile_image"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="20dp"
+            android:paddingTop="5dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:maxLines="1"/>
+
 </RelativeLayout>

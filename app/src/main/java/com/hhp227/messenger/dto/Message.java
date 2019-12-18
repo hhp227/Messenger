@@ -4,14 +4,16 @@ public class Message {
     private String sender;
     private String receiver;
     private String message;
+    private boolean isSeen;
 
     public Message() {
     }
 
-    public Message(String sender, String receiver, String message) {
+    public Message(String sender, String receiver, String message, boolean isSeen) {
         this.sender = sender;
         this.receiver = receiver;
         this.message = message;
+        this.isSeen = isSeen;
     }
 
     public String getSender() {
@@ -36,5 +38,13 @@ public class Message {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public boolean isSeen() {
+        return isSeen;
+    }
+
+    public void setSeen(boolean seen) {
+        isSeen = seen;
     }
 }

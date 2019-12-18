@@ -29,6 +29,14 @@
                 android:textColor="#ffffff"
                 android:padding="8dp"/>
 
+        <TextView
+                android:id="@+id/tv_seen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/tv_message"
+                android:layout_alignBottom="@id/tv_message"
+                android:layout_marginBottom="2dp"/>
+
     </RelativeLayout>
 
 </RelativeLayout>
